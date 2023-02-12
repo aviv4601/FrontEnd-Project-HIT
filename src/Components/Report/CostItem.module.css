@@ -1,0 +1,13 @@
+.report-cost-item {
+  list-style: none;
+  text-align: center;
+}
+
+.cost-item-line {
+  display: flex;
+  justify-content: center;
+}
+
+.cost-item-icon {
+  margin-top: 1.5rem;
+}

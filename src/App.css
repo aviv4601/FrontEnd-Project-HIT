@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+  background-image: linear-gradient(
+    to bottom,
+    #15e0af,
+    #7cc456,
+    #b39e00,
+    #dc6b0c,
+    #eb124b
+  );
+  min-height: 40rem;
+  height: fit-content;
+}
+
+.report {
+  display: inline-grid;
+  justify-items: center;
+  margin: 1rem;
+}
+
+.ask-for-report-form {
+  margin: 2rem;
+}
+
+.App-logo {
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+}

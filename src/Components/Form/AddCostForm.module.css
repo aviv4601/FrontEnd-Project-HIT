@@ -1,0 +1,26 @@
+.center-form {
+  margin: 1rem;
+  text-align: center;
+  height: 10rem;
+}
+
+.input-field {
+  border-radius: 5%;
+  margin: 0.3rem;
+}
+
+.invalid-input {
+  background-color: red;
+  border-radius: 5%;
+  margin: 0.3rem;
+}
+
+.select-category {
+  height: 1.5rem;
+  border-radius: 5%;
+  margin: 0.3rem;
+}
+
+.submit-btn {
+  margin-top: 1.5rem;
+}
