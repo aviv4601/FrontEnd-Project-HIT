@@ -77,9 +77,12 @@ class AskForReportForm extends React.Component {
           <div>
             {this.state.filteredData.length > 0 ? (
               <div className={classes["total-amount"]}>
-                {this.state.filteredData.map((cost) => {
+              {(() => {
+                this.state.totalAmount = 0; // initialize totalAmount to 0
+                return this.state.filteredData.map((cost) => {
                   this.state.totalAmount += Number(cost.sum);
-                })}
+                })
+              })()}
                 Total Amount is: {this.state.totalAmount}₪
                 <ReportsList filteredData={this.state.filteredData} />
               </div>

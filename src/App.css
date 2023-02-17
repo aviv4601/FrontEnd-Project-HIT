@@ -46,18 +46,18 @@ h1 {
 }
 
 .footer {
-  min-height: -100vh;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  font-size: xx-large;
-  text-align: center;
+  position: fixed;
+  bottom: 8px;
+  left: 16px;
+  font-size: 18px;
 }
 
 .footer-text {
+  display: flex;
   font-size: x-large;
   text-decoration: none;
 }
 .footer-text a {
+
   text-decoration: none;
 }

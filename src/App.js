@@ -25,7 +25,8 @@ class App extends Component {
         <header>
           <h1>Costs Manager 🛒</h1>
         </header>
-        <div>
+        <body>
+        <div className="cost">
           <ToggleAddCostBtn
             isAddCostBtnPressed={this.state.isAddCostBtnPressed}
             setIsAddCostBtnPressed={() =>
@@ -51,17 +52,22 @@ class App extends Component {
             </div>
           ) : (
             <div></div>
-          )}
+          )} 
         </div>
+        </body>
         <footer>
           <div className="footer">
             <div className="footer-text">
-              <a href="https://github.com/aviv4601">Aviv Amrusi </a>
+              <a href="https://github.com/aviv4601"> 
               <GitHubIcon />
+              </a>
+              Aviv Amrusi  
             </div>
             <div className="footer-text">
-              <a href="https://github.com/VTomcode">Tom Vivdenko </a>
+              <a href="https://github.com/VTomcode">
               <GitHubIcon />
+              </a>
+              Tom Vivdenko 
             </div>
           </div>
         </footer>
