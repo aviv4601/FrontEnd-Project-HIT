@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import localstorageapi from "../localstorageapi";
+import localstorageapi from "../api/localstorageapi";
 import { Button } from "@mui/material";
 import ReportsList from "../Report/ReportsList";
 
@@ -17,6 +17,7 @@ class AskForReportForm extends React.Component {
       isLoading: false,
       isSubmited: false,
       filteredData: [],
+      totalAmount: 0,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -56,7 +57,6 @@ class AskForReportForm extends React.Component {
           <DatePicker
             views={["year", "month"]}
             label="Year and Month"
-            // minDate={dayjs("2012-03-01")}
             maxDate={dayjs("2023-06-01")}
             value={this.state.askedDateValue}
             className={classes["date-picker"]}
@@ -76,7 +76,13 @@ class AskForReportForm extends React.Component {
         {this.state.isSubmited && (
           <div>
             {this.state.filteredData.length > 0 ? (
-              <ReportsList filteredData={this.state.filteredData} />
+              <div className={classes["total-amount"]}>
+                {this.state.filteredData.map((cost) => {
+                  this.state.totalAmount += Number(cost.sum);
+                })}
+                Total Amount is: {this.state.totalAmount}₪
+                <ReportsList filteredData={this.state.filteredData} />
+              </div>
             ) : (
               <p>No data to display</p>
             )}

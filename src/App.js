@@ -1,14 +1,16 @@
 // Developers details:
 // Aviv Amrusi 208665927
-// Tom Vivdenko ID
+// Tom Vivdenko 207610718
 import "./App.css";
 import AddCostForm from "./Components/Form/AddCostForm";
 import AskForReportForm from "./Components/Form/AskForReportForm";
 import ToggleAskForReportCostBtn from "./Components/UI/ToggleAskForReportBtn";
 import ToggleAddCostBtn from "./Components/UI/ToggleAddCostBtn";
 import React, { Component } from "react";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 class App extends Component {
+  // App c'tor
   constructor(props) {
     super(props);
     this.state = {
@@ -18,11 +20,10 @@ class App extends Component {
   }
 
   render() {
-    console.log("is asked : ", this.state.isAskForReportBtnPressed);
     return (
       <div className="App">
         <header>
-          <h1>Costs Manager</h1>
+          <h1>Costs Manager 🛒</h1>
         </header>
         <div>
           <ToggleAddCostBtn
@@ -52,6 +53,18 @@ class App extends Component {
             <div></div>
           )}
         </div>
+        <footer>
+          <div className="footer">
+            <div className="footer-text">
+              <a href="https://github.com/aviv4601">Aviv Amrusi </a>
+              <GitHubIcon />
+            </div>
+            <div className="footer-text">
+              <a href="https://github.com/VTomcode">Tom Vivdenko </a>
+              <GitHubIcon />
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

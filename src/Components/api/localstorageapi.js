@@ -30,7 +30,6 @@ localstorageapi.getReport = (year, month) => {
           filteredData.push(data[i]);
         }
       }
-
       resolve(filteredData);
     }
   });

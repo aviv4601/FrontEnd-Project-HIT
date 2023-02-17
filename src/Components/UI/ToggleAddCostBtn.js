@@ -16,7 +16,7 @@ class ToggleAddCostBtn extends Component {
   render() {
     return (
       <Button variant="outlined" onClick={this.handleClick}>
-        {this.props.isAddCostBtnPressed ? "Close Form" : "Add Cost"}
+        {this.props.isAddCostBtnPressed ? "X" : "Add Cost 💲"}
       </Button>
     );
   }

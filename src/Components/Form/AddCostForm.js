@@ -3,17 +3,16 @@ import classes from "./AddCostForm.module.css";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import Button from "@mui/material/Button";
-import localstorageapi from "../localstorageapi";
+import localstorageapi from "../api/localstorageapi";
 
 class AddCostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       sumValue: "",
-      categoryValue: "",
+      categoryValue: "Food",
       descriptionValue: "",
       isValidSumEntered: true,
-      isValidCategoryEntered: true,
       isLoading: false,
     };
 
@@ -35,11 +34,21 @@ class AddCostForm extends React.Component {
     this.setState({ categoryValue: event.target.value });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
 
     this.setState({ isLoading: true });
-    this.ensureValidation();
+
+    await this.ensureValidation();
+
+    const isValid = this.state.isValidSumEntered;
+
+    if (!isValid) {
+      console.log("Wrong data entered!");
+      alert("Something went wrong.. :)");
+      this.setState({ isLoading: false });
+      return;
+    }
 
     const cost = {
       sum: this.state.sumValue,
@@ -48,47 +57,26 @@ class AddCostForm extends React.Component {
       date: new Date(),
     };
 
-    setTimeout(() => {
-      // to ensure the validation we had to use a timer,
-      // else the data will be sent to local storage before the validation is over.
-      if (!this.state.isValidSumEntered || !this.state.isValidCategoryEntered) {
-        console.log("Wrong data entered!");
-        this.setState({ isLoading: false });
-        return;
-      } else {
-        localstorageapi
-          .addCost(cost)
-          .then(() => {
-            console.log("Data successfully saved to local storage.");
-            alert("Data saved to local storage");
-            this.cleanUpFunction();
-            this.setState({ isLoading: false });
-          })
-          .catch((error) => {
-            console.error("Error while saving data to local storage: ", error);
-          });
-      }
-    }, 500);
+    try {
+      await localstorageapi.addCost(cost);
+      console.log("Data successfully saved to local storage.");
+      alert("Data saved to local storage");
+      this.cleanUpFunction();
+    } catch (error) {
+      console.error("Error while saving data to local storage: ", error);
+    } finally {
+      this.setState({ isLoading: false });
+    }
   }
 
   ensureValidation() {
-    // const categories = ["food", "transportation", "entertainment", "other"];
-
     this.setState({
       isValidSumEntered: true,
-      isValidCategoryEntered: true,
     });
 
     if (this.state.sumValue < 0 || this.state.sumValue === "") {
       this.setState({ isValidSumEntered: false });
     }
-
-    // if (
-    //   !categories.includes(this.state.categoryValue.toLowerCase()) ||
-    //   this.state.categoryValue === ""
-    // ) {
-    //   this.setState({ isValidCategoryEntered: false });
-    // }
   }
 
   cleanUpFunction() {
@@ -122,11 +110,11 @@ class AddCostForm extends React.Component {
                 onChange={this.categoryHandleChange}
                 className={classes["select-category"]}
               >
-                <option value={"food"}>Food</option>
-                <option value={"Transportation"}>Transportation</option>{" "}
-                <option value={"entertainment"}>Entertainment</option>
-                <option value={"housing"}>Housing</option>
-                <option value={"other"}>Other</option>
+                <option value={"Food"}>Food</option>
+                <option value={"Transportation"}>Transportation</option>
+                <option value={"Entertainment"}>Entertainment</option>
+                <option value={"Housing"}>Housing</option>
+                <option value={"Other"}>Other</option>
               </select>
             </label>
           </div>

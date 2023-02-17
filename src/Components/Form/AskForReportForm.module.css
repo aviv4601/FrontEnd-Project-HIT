@@ -5,3 +5,8 @@
 .date-picker {
   color: black;
 }
+
+.total-amount {
+  color: black;
+  font-weight: bold;
+}

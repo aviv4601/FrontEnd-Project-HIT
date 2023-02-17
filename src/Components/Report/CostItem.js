@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./CostItem.module.css";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CategoryIcon from "@mui/icons-material/Category";
 
